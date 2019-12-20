@@ -1,5 +1,6 @@
 package conciliacao
 
+import br.com.glosa.minn.conciliacao.ConciliacaoService
 import guia.GuiaConvenio
 import guia.GuiaHospital
 import item.ItemConvenio
