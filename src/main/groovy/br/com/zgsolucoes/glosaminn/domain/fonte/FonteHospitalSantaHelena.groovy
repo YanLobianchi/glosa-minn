@@ -48,7 +48,7 @@ class FonteHospitalSantaHelena extends FonteHospital {
 		processeConteudoArquivo(conteudoXml)
 	}
 
-	private static List<GuiaHospital> processeConteudoArquivo(String conteudoXml) {
+	static List<GuiaHospital> processeConteudoArquivo(String conteudoXml) {
 		String numero_lote = conteudoXml.find(NUMERO_LOTE)
 		List<String> conteudoGuias = conteudoXml.findAll(GUIAS)
 		List<GuiaHospital> guias = []
