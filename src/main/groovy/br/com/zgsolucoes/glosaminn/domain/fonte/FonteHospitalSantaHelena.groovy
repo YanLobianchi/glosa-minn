@@ -1,6 +1,6 @@
 package br.com.zgsolucoes.glosaminn.domain.fonte
 
-import glosa.minn.ValorTotal
+import br.com.glosa.minn.valortotal.ValorTotal
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 import guia.DadosBeneficiario

@@ -15,7 +15,7 @@ class ConciliacaoService {
 		File[] arquivosPrestador = pastaPrestador.listFiles()
 		FonteHospitalSantaHelena fonte = new FonteHospitalSantaHelena()
 		List<GuiaHospital> guiasHospital = []
-		for(File arquivo : arquivosPrestador) {
+		for (File arquivo : arquivosPrestador) {
 			String conteudoXml = arquivo.text
 			guiasHospital.addAll(fonte.processeConteudoArquivo(conteudoXml))
 		}

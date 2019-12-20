@@ -1,4 +1,4 @@
-package glosa.minn
+package valortotal
 
 
 import guia.GuiaHospital

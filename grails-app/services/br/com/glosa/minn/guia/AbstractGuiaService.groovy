@@ -1,6 +1,7 @@
-package guia
+package br.com.glosa.minn.guia
 
 import grails.gorm.transactions.Transactional
+import guia.Guia
 import item.Item
 import javassist.NotFoundException
 

@@ -1,4 +1,6 @@
-package guia
+package br.com.glosa.minn.guia
+
+import guia.GuiaConvenio
 
 class GuiaConvenioService extends AbstractGuiaService<GuiaConvenio> {
 

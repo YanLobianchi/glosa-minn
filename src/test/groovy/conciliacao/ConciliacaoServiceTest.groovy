@@ -1,8 +1,9 @@
 package conciliacao
 
-import glosa.minn.ValorTotal
-import guia.GuiaConvenio
-import guia.GuiaHospital
+import br.com.glosa.minn.conciliacao.ConciliacaoService
+import br.com.glosa.minn.guia.GuiaConvenio
+import br.com.glosa.minn.guia.GuiaHospital
+import br.com.glosa.minn.valortotal.ValorTotal
 import item.ItemConvenio
 import item.ItemHospital
 import spock.lang.Specification

@@ -1,3 +1,5 @@
+package remessa
+
 import guia.GuiaHospital
 
 class Remessa {
