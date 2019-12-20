@@ -6,5 +6,4 @@ class GuiaConvenio extends Guia<ItemConvenio> {
 	BigDecimal valorPago
 	BigDecimal valorGlosa
 	BigDecimal valorApresentado
-
 }

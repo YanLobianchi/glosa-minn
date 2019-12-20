@@ -9,8 +9,6 @@ abstract class Guia<I extends Item> {
 	String numeroSolicitacaoInternacao
 	String numeroGuiaOperadora
 	String senha
-	String nomeBeneficiario
-	String matricula
-	String atendimentoRn
+	DadosBeneficiario dadosBeneficiario
 	List<I> itens
 }

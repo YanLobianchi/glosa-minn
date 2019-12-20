@@ -4,7 +4,7 @@ abstract class Item {
 
 	Date dataExecucao
 	String horaInicial
-	String horafinal
+	String horaFinal
 
 	String codigoTabela
 	String codigoItem
