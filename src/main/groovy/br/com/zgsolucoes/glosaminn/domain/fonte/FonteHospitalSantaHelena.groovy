@@ -1,10 +1,8 @@
 package br.com.zgsolucoes.glosaminn.domain.fonte
 
-import br.com.zgsolucoes.glosaminn.domain.guia.DadosBeneficiario
-import br.com.zgsolucoes.glosaminn.domain.guia.GuiaHospital
-import br.com.zgsolucoes.glosaminn.domain.item.ItemHospital
-
-import java.text.SimpleDateFormat
+import guia.DadosBeneficiario
+import guia.GuiaHospital
+import item.ItemHospital
 
 class FonteHospitalSantaHelena extends FonteHospital {
 
@@ -77,14 +75,14 @@ class FonteHospitalSantaHelena extends FonteHospital {
 
 	private static GuiaHospital obtenhaInfosGuia(String conteudoGuia, GuiaHospital guia) {
 		DadosBeneficiario dadosBeneficiario = new DadosBeneficiario()
-		guia.dadosBeneficiario =dadosBeneficiario
+		guia.dadosBeneficiario = dadosBeneficiario
 
 		guia.dadosBeneficiario.nomeBeneficiario = conteudoGuia.find(NOME_BENEFICIARIO)
 		guia.numeroGuiaPrestador = conteudoGuia.find(NUMERO_GUIA_PRESTADOR)
 		guia.numeroGuiaOperadora = conteudoGuia.find(NUMERO_GUIA_OPERADORA)
 		guia.dadosBeneficiario.matricula = conteudoGuia.find(NUMERO_CARTEIRA)
 		guia.senha = conteudoGuia.find(SENHA)
-		guia.dadosBeneficiario.atendimentoRN = conteudoGuia.find(ATENDIMENTO_RN)
+		guia.dadosBeneficiario.atendimentoRn = conteudoGuia.find(ATENDIMENTO_RN)
 		guia.dadosBeneficiario.numero_guia_internacao = conteudoGuia.find(NUMERO_GUIA_INTERNACAO)
 
 		return guia

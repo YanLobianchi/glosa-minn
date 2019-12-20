@@ -16,7 +16,7 @@ abstract class Guia<I extends Item> {
 	String numeroGuiaOperadora
 	String senha
 	DadosBeneficiario dadosBeneficiario
-	List<I> itens = []
+	List<I> itens = [] as List<I>
 
 	static hasMany = [itens: Item]
 

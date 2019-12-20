@@ -3,19 +3,22 @@ package conciliacao
 import guia.GuiaConvenio
 import guia.GuiaHospital
 import item.Item
+import item.ItemConvenio
+import item.ItemHospital
 
 class ConciliacaoService {
 
 	void realizaConciliacao(List<GuiaHospital> guiasHospital, List<GuiaConvenio> guiasConvenio) {
 		for (GuiaHospital guiaHospital : guiasHospital) {
-			GuiaConvenio guiaConvenioEquivalente = guiasConvenio.find { GuiaConvenio guiaConvenio ->
+			List<GuiaConvenio> guiasConvenioEquivalente = guiasConvenio.findAll { GuiaConvenio guiaConvenio ->
 				guiaConvenio.numeroGuiaOperadora == guiaHospital.numeroGuiaOperadora &&
 						guiaConvenio.numeroGuiaPrestador == guiaHospital.numeroGuiaPrestador &&
 						guiaConvenio.valorApresentado == guiaHospital.valorTotal.valorTotalGeral &&
 						guiaConvenio.senha == guiaHospital.senha &&
 						guiaConvenio.nomeConvenio == guiaHospital.nomeConvenio
 			}
-			if (guiaConvenioEquivalente) {
+			if (guiasConvenioEquivalente.size() == 1) {
+				GuiaConvenio guiaConvenioEquivalente = guiasConvenioEquivalente.first()
 				guiaConvenioEquivalente.guiaConciliada = guiaHospital
 				guiaHospital.guiaConciliada = guiaConvenioEquivalente
 				realizaEquivalenciaItens(guiaHospital.itens, guiaConvenioEquivalente.itens)
@@ -28,7 +31,8 @@ class ConciliacaoService {
 			Item itemConvenioEquivalente = itensConvenio.find { Item itemConvenio ->
 				itemConvenio.quantidade == itemHospital.quantidade &&
 						itemConvenio.codigoItem == itemHospital.codigoItem &&
-						itemConvenio.valorTotal == itemHospital.valorTotal
+						itemConvenio.valorTotal == itemHospital.valorTotal && 
+						itemConvenio.dataExecucao == itemHospital.dataExecucao
 			}
 			if (itemConvenioEquivalente) {
 				itemConvenioEquivalente.itemConciliado = itemHospital
