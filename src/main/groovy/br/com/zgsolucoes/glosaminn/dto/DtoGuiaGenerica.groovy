@@ -1,4 +1,4 @@
-package br.com.zgsolucoes.glosaminn.domain.dto
+package br.com.zgsolucoes.glosaminn.dto
 
 class DtoGuiaGenerica {
 	String lote
