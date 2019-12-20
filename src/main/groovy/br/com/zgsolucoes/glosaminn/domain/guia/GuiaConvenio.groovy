@@ -2,6 +2,7 @@ package br.com.zgsolucoes.glosaminn.domain.guia
 
 
 import br.com.zgsolucoes.glosaminn.domain.item.ItemConvenio
+import br.com.zgsolucoes.glosaminn.dto.DtoGuiaGenerica
 import groovy.transform.CompileStatic
 
 @CompileStatic

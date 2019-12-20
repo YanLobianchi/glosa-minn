@@ -1,7 +1,10 @@
 package br.com.zgsolucoes.glosaminn.domain.fonte
 
-import br.com.zgsolucoes.glosaminn.dto.DtoGuiaGenerica
-import br.com.zgsolucoes.glosaminn.dto.DtoItemGenerico
+import br.com.zgsolucoes.glosaminn.domain.guia.DadosBeneficiario
+import br.com.zgsolucoes.glosaminn.domain.guia.GuiaHospital
+import br.com.zgsolucoes.glosaminn.domain.item.ItemHospital
+
+import java.text.SimpleDateFormat
 
 class FonteHospitalSantaHelena extends FonteHospital {
 
@@ -34,16 +37,16 @@ class FonteHospitalSantaHelena extends FonteHospital {
 		processeConteudoArquivo(conteudoXml)
 	}
 
-	private static List<DtoGuiaGenerica> processeConteudoArquivo(String conteudoXml) {
+	private static List<GuiaHospital> processeConteudoArquivo(String conteudoXml) {
 		String numero_lote = conteudoXml.find(NUMERO_LOTE)
 		List<String> conteudoGuias = conteudoXml.findAll(GUIAS)
-		List<DtoGuiaGenerica> guias = []
+		List<GuiaHospital> guias = []
 
 		for (String conteudoGuia in conteudoGuias) {
-			DtoGuiaGenerica guia = new DtoGuiaGenerica()
+			GuiaHospital guia = new GuiaHospital()
 
 			obtenhaInfosGuia(conteudoGuia, guia)
-			List<DtoItemGenerico> itensList = obtenhaItensDaGuia(conteudoGuia)
+			List<ItemHospital> itensList = obtenhaItensDaGuia(conteudoGuia)
 
 			guia.itens = itensList
 			guia.lote = numero_lote
@@ -54,37 +57,35 @@ class FonteHospitalSantaHelena extends FonteHospital {
 		return guias
 	}
 
-	private static List<DtoItemGenerico> obtenhaItensDaGuia(String conteudoGuia) {
+	private static List<ItemHospital> obtenhaItensDaGuia(String conteudoGuia) {
 		String conteudoItens = conteudoGuia.find(CAMPO_ITENS)
 		List<String> itens = conteudoItens.findAll(CAMPO_ITEM)
-		List<DtoItemGenerico> itensList = []
+		List<ItemHospital> itensList = []
 
 		for (String item in itens) {
-			DtoItemGenerico dtoItem = new DtoItemGenerico()
+			ItemHospital itemHospital = new ItemHospital()
 
-			dtoItem.dataExecucao = item.find(DATA_EXECUCAO)
-			dtoItem.codigoTabela = item.find(CODIGO_TABELA)
-			dtoItem.codigoProcedimento = item.find(CODIGO_PROCEDIMENTO)
-			dtoItem.reducaoAcrescimo = item.find(REDUCAO_ACRESCIMO)
-			dtoItem.valorUnitario = item.find(VALOR_UNITARIO)
-			dtoItem.valorPago = item.find(VALOR_TOTAL)
-			dtoItem.descricaoProcedimento = item.find(DESCRICAO_PROCEDIMENTO)
-			dtoItem.quantidade = item.find(QUANTIDADE_EXECUTADA)
+			itemHospital.codigoTabela = item.find(CODIGO_TABELA)
+			itemHospital.codigoItem = item.find(CODIGO_PROCEDIMENTO)
+			itemHospital.descricaoItem = item.find(DESCRICAO_PROCEDIMENTO)
 
-			itensList.add(dtoItem)
+			itensList.add(itemHospital)
 		}
 
 		return itensList
 	}
 
-	private static DtoGuiaGenerica obtenhaInfosGuia(String conteudoGuia, DtoGuiaGenerica guia) {
-		guia.nomeGuiaPrestador = conteudoGuia.find(NOME_BENEFICIARIO)
+	private static GuiaHospital obtenhaInfosGuia(String conteudoGuia, GuiaHospital guia) {
+		DadosBeneficiario dadosBeneficiario = new DadosBeneficiario()
+		guia.dadosBeneficiario =dadosBeneficiario
+
+		guia.dadosBeneficiario.nomeBeneficiario = conteudoGuia.find(NOME_BENEFICIARIO)
 		guia.numeroGuiaPrestador = conteudoGuia.find(NUMERO_GUIA_PRESTADOR)
 		guia.numeroGuiaOperadora = conteudoGuia.find(NUMERO_GUIA_OPERADORA)
-		guia.matricula = conteudoGuia.find(NUMERO_CARTEIRA)
+		guia.dadosBeneficiario.matricula = conteudoGuia.find(NUMERO_CARTEIRA)
 		guia.senha = conteudoGuia.find(SENHA)
-		guia.atendimentoRN = conteudoGuia.find(ATENDIMENTO_RN)
-		guia.numero = conteudoGuia.find(NUMERO_GUIA_INTERNACAO)
+		guia.dadosBeneficiario.atendimentoRN = conteudoGuia.find(ATENDIMENTO_RN)
+		guia.dadosBeneficiario.numero_guia_internacao = conteudoGuia.find(NUMERO_GUIA_INTERNACAO)
 
 		return guia
 	}
