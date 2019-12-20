@@ -26,13 +26,13 @@ class ConciliacaoServiceTest extends Specification {
 
 	def "RealizaConciliacao"() {
 		given:
-		guiaConvenio1 = new GuiaConvenio(valorApresentado: 500)
+		guiaConvenio1 = new GuiaConvenio(valorApresentado: 500, numeroGuiaOperadora: '1234', numeroGuiaPrestador: '12345')
 		guiaConvenio2 = new GuiaConvenio(valorApresentado: 1500)
 		guiaHospital1 = new GuiaHospital()
 		guiaHospital1.valorTotal = new ValorTotal(valorTotalGeral: 1500)
 		guiaHospital2 = new GuiaHospital()
 		guiaHospital2.valorTotal = new ValorTotal(valorTotalGeral: 200)
-		guiaHospital3 = new GuiaHospital()
+		guiaHospital3 = new GuiaHospital(numeroGuiaOperadora: '1234', numeroGuiaPrestador: '12345')
 		guiaHospital3.valorTotal = new ValorTotal(valorTotalGeral: 500)
 		guiasHospital = [guiaHospital1, guiaHospital2, guiaHospital3]
 		guiasConvenio = [guiaConvenio1, guiaConvenio2]
