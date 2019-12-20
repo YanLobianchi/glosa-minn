@@ -1,4 +1,4 @@
-package br.com.zgsolucoes.glosaminn.domain.item
+package item
 
 class ItemHospital extends Item {
 	BigDecimal reducaoAcrescimo

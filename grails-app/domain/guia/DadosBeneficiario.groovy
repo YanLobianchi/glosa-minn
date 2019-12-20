@@ -1,8 +1,10 @@
-package br.com.zgsolucoes.glosaminn.domain.guia
+package guia
 
 class DadosBeneficiario {
 	String matricula
-	String atendimentoRN
+	String atendimentoRn
 	String nomeBeneficiario
 	String numero_guia_internacao
+
+	static belongsTo = Guia
 }

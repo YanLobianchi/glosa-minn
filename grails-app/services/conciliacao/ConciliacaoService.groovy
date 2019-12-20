@@ -1,16 +1,10 @@
 package conciliacao
 
+import guia.GuiaConvenio
+import guia.GuiaHospital
+import item.Item
 
-import br.com.zgsolucoes.glosaminn.domain.guia.GuiaConvenio
-import br.com.zgsolucoes.glosaminn.domain.guia.GuiaHospital
-import br.com.zgsolucoes.glosaminn.domain.item.Item
-import br.com.zgsolucoes.glosaminn.domain.item.ItemConvenio
-import br.com.zgsolucoes.glosaminn.domain.item.ItemHospital
-import groovy.transform.CompileStatic
-
-@CompileStatic
 class ConciliacaoService {
-
 
 	void realizaConciliacao(List<GuiaHospital> guiasHospital, List<GuiaConvenio> guiasConvenio) {
 		for (GuiaHospital guiaHospital : guiasHospital) {
@@ -42,6 +36,5 @@ class ConciliacaoService {
 			}
 		}
 	}
-
 
 }
