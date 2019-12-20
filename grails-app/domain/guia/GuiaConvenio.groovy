@@ -11,7 +11,7 @@ class GuiaConvenio extends Guia<ItemConvenio> {
 		valorPago = valorPago ? valorPago + item.valorPago : item.valorPago
 		valorGlosa = valorGlosa ? valorGlosa + item.valorGlosa : item.valorGlosa
 		valorApresentado = valorApresentado ? valorApresentado + item.valorTotal : item.valorTotal
-		itens.add(item)
+		itens = itens ? itens.add(item) : [item] as List<ItemConvenio>
 	}
 
 }

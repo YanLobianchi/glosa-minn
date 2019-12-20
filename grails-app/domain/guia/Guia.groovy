@@ -9,6 +9,7 @@ import item.Item
 @GrailsCompileStatic
 abstract class Guia<I extends Item> {
 	Guia guiaConciliada
+	String nomeConvenio
 	String lote
 	String numeroGuiaPrestador
 	String numeroSolicitacaoInternacao
