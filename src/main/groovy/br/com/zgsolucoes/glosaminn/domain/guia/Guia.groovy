@@ -11,4 +11,5 @@ abstract class Guia<I extends Item> {
 	String senha
 	DadosBeneficiario dadosBeneficiario
 	List<I> itens
+	String nomeConvenio
 }
