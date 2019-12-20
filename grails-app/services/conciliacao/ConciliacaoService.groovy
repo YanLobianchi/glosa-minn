@@ -21,7 +21,7 @@ class ConciliacaoService {
 				GuiaConvenio guiaConvenioEquivalente = guiasConvenioEquivalente.first()
 				guiaConvenioEquivalente.guiaConciliada = guiaHospital
 				guiaHospital.guiaConciliada = guiaConvenioEquivalente
-				realizaEquivalenciaItens(guiaHospital.itens, guiaConvenioEquivalente.itens)
+				realizaEquivalenciaItens(guiaHospital.itens as List<ItemHospital>, guiaConvenioEquivalente.itens as List<ItemConvenio>)
 			}
 		}
 	}
