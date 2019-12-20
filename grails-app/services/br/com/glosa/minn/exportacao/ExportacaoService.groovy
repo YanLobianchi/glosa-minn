@@ -16,20 +16,17 @@ class ExportacaoService {
 
 	final ObjectMapper objectMapper = new ObjectMapper()
 
-	String json() {
-		final List<Guia> guias = Guia.list()
+	String json(List<GuiaHospital> guias) {
 		return objectMapper.writeValueAsString(guias)
 	}
 
-	String csvGuias() {
-		final List<GuiaHospital> guias = Guia.list() as List<GuiaHospital>
+	String csvGuias(guias) {
 		final List<Map> guiasMaps = guias.stream().map({ remessa -> guiaHospitalService.extrairMapasDeGuias(guias) })
 										 .collect(Collectors.toList()).flatten() as List<Map>
 		return toCsv(guiasMaps)
 	}
 
-	String csvItens() {
-		final List<GuiaHospital> guias = Guia.list() as List<GuiaHospital>
+	String csvItens(guias) {
 		final List<Map> itens = guias.stream().map({ remessa -> guiaHospitalService.extrairMapasDeItens(guias) })
 									 .collect(Collectors.toList()).flatten() as List<Map>
 		return toCsv(itens)

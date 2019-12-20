@@ -6,14 +6,15 @@ import spock.lang.Specification
 
 class ExportacaoServiceTest extends Specification implements ServiceUnitTest<ExportacaoService> {
 
+    ExportacaoService exportacaoService = Mock()
+
     def setup() {
     }
 
     def cleanup() {
     }
 
-    void "test something"() {
-        expect: "fix me"
-        true == false
+    void "json"() {
+
     }
 }
