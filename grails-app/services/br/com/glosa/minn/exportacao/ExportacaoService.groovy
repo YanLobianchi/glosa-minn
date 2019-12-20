@@ -2,14 +2,14 @@ package br.com.glosa.minn.exportacao
 
 import br.com.glosa.minn.guia.GuiaHospitalService
 import com.fasterxml.jackson.databind.ObjectMapper
-import grails.gorm.transactions.Transactional
-import guia.Guia
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
 import guia.GuiaHospital
 
 import java.util.stream.Collectors
 import java.util.stream.Stream
 
-@Transactional
+@CompileStatic(TypeCheckingMode.SKIP)
 class ExportacaoService {
 
 	GuiaHospitalService guiaHospitalService
