@@ -1,7 +1,7 @@
 package br.com.zgsolucoes.glosaminn.domain.item
 
 abstract class Item {
-
+	Item itemConciliado
 	Date dataExecucao
 	String horaInicial
 	String horaFinal
