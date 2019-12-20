@@ -15,4 +15,17 @@ class ValorTotal {
 
 	static belongsTo = GuiaHospital
 
+	Map toMap() {
+		[
+				valorProcedimentos  : this.valorProcedimentos,
+				valorDiarias        : this.valorDiarias,
+				valorTaxasAlugueis  : this.valorTaxasAlugueis,
+				valorMateriais      : this.valorMateriais,
+				valorMedicamentos   : this.valorMedicamentos,
+				valorOPME           : this.valorOPME,
+				valorGasesMedicinais: this.valorGasesMedicinais,
+				valorTotalGeral     : this.valorTotalGeral,
+		]
+	}
+
 }

@@ -8,4 +8,10 @@ class GuiaHospital extends Guia<ItemHospital> {
 
 	static embedded = ['valorTotal']
 
+	Map toMap() {
+		toMapAbstract() + [
+				valorTotal: this.valorTotal.toMap(),
+		]
+	}
+
 }

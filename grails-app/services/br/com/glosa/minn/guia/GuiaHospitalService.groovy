@@ -12,7 +12,7 @@ class GuiaHospitalService extends AbstractGuiaService<GuiaHospital> {
 	}
 
 	List<Map<String, ?>> extrairMapasDeGuias(final List<GuiaHospital> guias) {
-		final List<Map> guiasMaps = guias.findResults { it.guiaConciliada != null ? it.toMap() : null }
+		final List<Map> guiasMaps = guias.findResults { it.guiaConciliada != null ? it.toMap() : null } as List<Map>
 		guiasMaps*.remove('itens')
 		return guiasMaps
 	}
@@ -24,11 +24,11 @@ class GuiaHospitalService extends AbstractGuiaService<GuiaHospital> {
 			}
 
 			final List<Map> itens = guia.itens*.toMap()
-			itens.forEach({ final Map item ->
+			for (final Map item in itens) {
 				Map guiaMap = guia.toMap()
 				guiaMap.remove('itens')
 				item.putAll(guiaMap)
-			})
+			}
 
 			return itens
 		}.flatten() as List<Map>

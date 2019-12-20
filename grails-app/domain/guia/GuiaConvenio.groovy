@@ -14,11 +14,19 @@ class GuiaConvenio extends Guia<ItemConvenio> {
 		valorPago = valorPago ? valorPago + item.valorPago : item.valorPago
 		valorGlosa = valorGlosa ? valorGlosa + item.valorGlosa : item.valorGlosa
 		valorApresentado = valorApresentado ? valorApresentado + item.valorTotal : item.valorTotal
-		if(itens){
+		if (itens) {
 			itens.add(item)
 		} else {
 			itens = [item]
 		}
+	}
+
+	Map toMap() {
+		toMapAbstract() + [
+				valorPago       : this.valorPago,
+				valorGlosa      : this.valorGlosa,
+				valorApresentado: this.valorApresentado,
+		]
 	}
 
 }

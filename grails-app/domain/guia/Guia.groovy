@@ -1,6 +1,6 @@
 package guia
 
-import grails.compiler.GrailsCompileStatic
+
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 import item.Item
@@ -16,6 +16,22 @@ abstract class Guia<I extends Item> {
 	String senha
 	DadosBeneficiario dadosBeneficiario
 	List<I> itens = [] as List<I>
+
+	Map toMapAbstract() {
+		return [
+				guiaConciliada             : this.guiaConciliada,
+				nomeConvenio               : this.nomeConvenio,
+				lote                       : this.lote,
+				numeroGuiaPrestador        : this.numeroGuiaPrestador,
+				numeroSolicitacaoInternacao: this.numeroSolicitacaoInternacao,
+				numeroGuiaOperadora        : this.numeroGuiaOperadora,
+				senha                      : this.senha,
+				dadosBeneficiario          : this.dadosBeneficiario,
+				itens                      : this.itens*.toMap(),
+		]
+	}
+
+	abstract Map toMap()
 
 	static hasMany = [itens: Item]
 

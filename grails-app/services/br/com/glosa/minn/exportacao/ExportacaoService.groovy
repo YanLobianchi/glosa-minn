@@ -1,12 +1,10 @@
 package br.com.glosa.minn.exportacao
 
 import br.com.glosa.minn.guia.GuiaHospitalService
-import br.com.glosa.minn.remessa.Remessa
-import RemessaService
-import br.com.glosa.minn.remessa.RemessaService
 import com.fasterxml.jackson.databind.ObjectMapper
 import grails.gorm.transactions.Transactional
 import guia.Guia
+import guia.GuiaHospital
 
 import java.util.stream.Collectors
 import java.util.stream.Stream
@@ -24,16 +22,16 @@ class ExportacaoService {
 	}
 
 	String csvGuias() {
-		final List<Guia> guias = Guia.list()
-		final List<Map> guias = remessas.stream().map({ remessa -> remessaService.extrairMapasDeGuias(remessa) })
-										.collect(Collectors.toList()).flatten() as List<Map>
-		return toCsv(guias)
+		final List<GuiaHospital> guias = Guia.list() as List<GuiaHospital>
+		final List<Map> guiasMaps = guias.stream().map({ remessa -> guiaHospitalService.extrairMapasDeGuias(guias) })
+										 .collect(Collectors.toList()).flatten() as List<Map>
+		return toCsv(guiasMaps)
 	}
 
 	String csvItens() {
-		final List<Remessa> remessas = remessaService.list()
-		final List<Map> itens = remessas.stream().map({ remessa -> remessaService.extrairMapasDeItens(remessa) })
-										.collect(Collectors.toList()).flatten() as List<Map>
+		final List<GuiaHospital> guias = Guia.list() as List<GuiaHospital>
+		final List<Map> itens = guias.stream().map({ remessa -> guiaHospitalService.extrairMapasDeItens(guias) })
+									 .collect(Collectors.toList()).flatten() as List<Map>
 		return toCsv(itens)
 	}
 

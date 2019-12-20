@@ -1,12 +1,11 @@
 package conciliacao
 
-import br.com.glosa.minn.conciliacao.ConciliacaoService
-import br.com.glosa.minn.guia.GuiaConvenio
-import br.com.glosa.minn.guia.GuiaHospital
-import br.com.glosa.minn.valortotal.ValorTotal
+import guia.GuiaConvenio
+import guia.GuiaHospital
 import item.ItemConvenio
 import item.ItemHospital
 import spock.lang.Specification
+import valortotal.ValorTotal
 
 class ConciliacaoServiceTest extends Specification {
 
