@@ -1,7 +1,6 @@
 package br.com.glosa.minn.guia
 
 import guia.GuiaHospital
-import remessa.Remessa
 
 class GuiaHospitalService extends AbstractGuiaService<GuiaHospital> {
 
