@@ -1,4 +1,4 @@
-package br.com.zgsolucoes.glosaminn.service.conciliacao
+package conciliacao
 
 
 import br.com.zgsolucoes.glosaminn.domain.guia.GuiaConvenio
