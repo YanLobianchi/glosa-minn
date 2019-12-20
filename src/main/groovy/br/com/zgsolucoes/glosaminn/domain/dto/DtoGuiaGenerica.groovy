@@ -1,11 +1,17 @@
 package br.com.zgsolucoes.glosaminn.domain.dto
 
 class DtoGuiaGenerica {
-    String lote
-    String numeroGuiaPrestador
-    String nomeGuiaPrestador
-    BigDecimal valorPagoGuia
-    BigDecimal valorApresentadoGuia
-    BigDecimal valorGlosadoGuia
-    List<DtoItemGenerico> itensDaGuia
+	String lote
+	String numeroGuiaPrestador
+	String numero
+	String senha
+	String nomeGuiaPrestador
+	String numeroGuiaOperadora
+	String matricula
+	String nome
+	String atendimentoRN
+	BigDecimal valorPagoGuia
+	BigDecimal valorApresentadoGuia
+	BigDecimal valorGlosadoGuia
+	List<DtoItemGenerico> itens
 }
