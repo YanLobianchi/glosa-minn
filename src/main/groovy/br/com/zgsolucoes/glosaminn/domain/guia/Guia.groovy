@@ -1,6 +1,8 @@
 package br.com.zgsolucoes.glosaminn.domain.guia
 
-abstract class Guia {
+import br.com.zgsolucoes.glosaminn.domain.item.Item
+
+abstract class Guia<I extends Item> {
 
 	String lote
 	String numeroGuiaPrestador
@@ -8,5 +10,7 @@ abstract class Guia {
 	String numeroGuiaOperadora
 	String senha
 	String nomeBeneficiario
-
+	String matricula
+	String atendimentoRn
+	List<I> itens
 }
