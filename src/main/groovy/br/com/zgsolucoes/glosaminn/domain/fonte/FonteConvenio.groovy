@@ -2,8 +2,7 @@ package br.com.zgsolucoes.glosaminn.domain.fonte
 
 abstract class FonteConvenio {
 
-	abstract void preProcesseConteudoArquivo()
+	void preProcesseConteudoArquivo(String caminhoArquivo) {}
 
-	abstract void processeConteudoArquivo()
-
+	void processeConteudoArquivo() {}
 }

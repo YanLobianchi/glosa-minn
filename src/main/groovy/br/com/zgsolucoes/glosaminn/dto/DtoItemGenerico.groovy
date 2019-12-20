@@ -1,6 +1,7 @@
 package br.com.zgsolucoes.glosaminn.dto
 
 class DtoItemGenerico {
+	String codigoItem
 	String dataExecucao
 	String codigoTabela
 	String codigoProcedimento
@@ -8,8 +9,8 @@ class DtoItemGenerico {
 	String reducaoAcrescimo
 	String valorUnitario
 	String descricaoProcedimento
-
 	String valorPago
+
 	BigDecimal valorApresentado
 	BigDecimal valorGlosado
 }

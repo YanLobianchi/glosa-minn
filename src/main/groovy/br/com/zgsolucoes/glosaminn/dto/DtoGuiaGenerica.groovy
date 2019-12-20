@@ -5,7 +5,6 @@ class DtoGuiaGenerica {
 	String numeroGuiaPrestador
 	String numero
 	String senha
-	String nomeGuiaPrestador
 	String numeroGuiaOperadora
 	String matricula
 	String nome
