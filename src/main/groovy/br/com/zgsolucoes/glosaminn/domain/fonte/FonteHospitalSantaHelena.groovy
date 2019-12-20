@@ -61,6 +61,7 @@ class FonteHospitalSantaHelena extends FonteHospital {
 
 			guia.itens = itensList
 			guia.lote = numero_lote
+			guia.nomeConvenio = "GlosaMaxx"
 
 			guias.add(guia)
 		}
