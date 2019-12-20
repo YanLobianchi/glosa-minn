@@ -1,4 +1,4 @@
-package br.com.zgsolucoes.glosaminn.domain.fonte;
+package br.com.zgsolucoes.glosaminn.fonte;
 
 abstract class FonteConvenio {
 
@@ -6,6 +6,6 @@ abstract class FonteConvenio {
 
 	void processeConteudoArquivo() {}
 
-	static List<Object> retorneGuiasDoArquivo() { return []}
+	static List<Object> retorneGuiasDoArquivo() { return [] }
 
 }

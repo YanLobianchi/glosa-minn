@@ -1,4 +1,4 @@
-package br.com.zgsolucoes.glosaminn.domain.fonte;
+package br.com.zgsolucoes.glosaminn.fonte;
 
 abstract class FonteHospital {
 
