@@ -1,10 +1,12 @@
-package br.com.zgsolucoes.glosaminn.domain.fonte;
+package br.com.zgsolucoes.glosaminn.domain.fonte
+
+import br.com.zgsolucoes.glosaminn.domain.dto.DtoGuiaGenerica;
 
 abstract class FonteHospital {
 
-	void preProcesseConteudoArquivo() {}
+	void preProcesseConteudoArquivo(String caminhoArquivo) {}
 
 	void processeConteudoArquivo() {}
 
-	static List<Object> retorneGuiasDoArquivo() { return [] }
+	static List<DtoGuiaGenerica> retorneGuiasDoArquivo() { return [] }
 }
