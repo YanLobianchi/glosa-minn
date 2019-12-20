@@ -2,7 +2,7 @@
 grails:
   profile: web
   codegen:
-    defaultPackage: glosa.minn
+    defaultPackage: br.com.glosa.minn
   gorm:
     reactor:
       # Whether to translate GORM events into Reactor events
@@ -13,6 +13,7 @@ info:
     name: '@info.app.name@'
     version: '@info.app.version@'
     grailsVersion: '@info.app.grailsVersion@'
+    serviceName: 'glosa-minn'
 spring:
   jmx:
     unique-names: true
@@ -93,30 +94,33 @@ management:
 
 ---
 hibernate:
+  dialect: 'net.kaleidos.hibernate.PostgresqlExtensionsDialect'
   cache:
     queries: false
     use_second_level_cache: false
     use_query_cache: false
+    region:
+      factory_class: 'org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory'
 dataSource:
-  pooled: true
+  pooled: false
   jmxExport: true
-  driverClassName: org.h2.Driver
-  username: sa
-  password: ''
+  driverClassName: org.postgresql.Driver
+  username: postgres
+  password: fibo123
 
 environments:
   development:
     dataSource:
-      dbCreate: create-drop
-      url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+      dbCreate: update
+      url: jdbc:postgresql://${POSTGRES_DATABASE_URL:localhost:5432/glosa-minn}
   test:
     dataSource:
       dbCreate: update
-      url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+      url: jdbc:postgresql://${POSTGRES_DATABASE_URL:localhost:5432/glosa-minn-test}
   production:
     dataSource:
       dbCreate: none
-      url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+      url: jdbc:postgresql://${POSTGRES_DATABASE_URL}
       properties:
         jmxEnabled: true
         initialSize: 5

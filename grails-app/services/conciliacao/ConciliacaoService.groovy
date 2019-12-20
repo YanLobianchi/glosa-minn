@@ -1,12 +1,10 @@
-package br.com.zgsolucoes.glosaminn.service.conciliacao
+package conciliacao
 
-
-import br.com.zgsolucoes.glosaminn.domain.guia.GuiaConvenio
-import br.com.zgsolucoes.glosaminn.domain.guia.GuiaHospital
-import br.com.zgsolucoes.glosaminn.domain.item.Item
+import guia.GuiaConvenio
+import guia.GuiaHospital
+import item.Item
 
 class ConciliacaoService {
-
 
 	void realizaConciliacao(List<GuiaHospital> guiasHospital, List<GuiaConvenio> guiasConvenio) {
 		for (GuiaHospital guiaHospital : guiasHospital) {
@@ -36,6 +34,5 @@ class ConciliacaoService {
 			}
 		}
 	}
-
 
 }
