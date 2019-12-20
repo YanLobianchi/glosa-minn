@@ -7,7 +7,7 @@ class ExecutorRobot {
 
 
 	static void executar(){
-		String path = "/home/igor/Documents/projeto/glosa-minn/src/main/resources/robot/glosaMaxx"
+		String path = "src/main/resources/robot/glosaMaxx/glosaMaxx.py"
 		String comando = 'python3 ' + path + '/glosaMaxx.py ' + path + '/12-2019'
 		println comando.execute().text
 	}

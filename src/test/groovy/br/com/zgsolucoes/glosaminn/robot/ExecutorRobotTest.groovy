@@ -15,8 +15,8 @@ class ExecutorRobotTest extends Specification {
 	def "Executar"() {
 		when:
 		ExecutorRobot.executar()
-		String pathOriginal = '/home/igor/Documents/projeto/glosa-minn/src/test/resources/glosaMaxx/pagamento_glosamax_1.csv'
-		String pathBaixado = '/home/igor//Documents/projeto/glosa-minn/src/main/resources/robot/glosaMaxx/12-2019/pagamento_glosamax_1.csv'
+		String pathOriginal = 'src/test/resources/glosaMaxx/pagamento_glosamax_1.csv'
+		String pathBaixado = 'src/main/resources/robot/glosaMaxx/12-2019/pagamento_glosamax_1.csv'
 		File arquivoOriginal = new File(pathOriginal)
 		File arquivoBaixado = new File(pathBaixado)
 
