@@ -8,5 +8,6 @@ abstract class Guia {
 	String numeroGuiaOperadora
 	String senha
 	String nomeBeneficiario
-
+	String matricula
+	String atendimentoRn
 }
