@@ -1,11 +1,11 @@
 package br.com.zgsolucoes.glosaminn.domain.fonte
 
-import br.com.glosa.minn.valortotal.ValorTotal
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 import guia.DadosBeneficiario
 import guia.GuiaHospital
 import item.ItemHospital
+import valortotal.ValorTotal
 
 import java.text.SimpleDateFormat
 
@@ -119,10 +119,10 @@ class FonteHospitalSantaHelena extends FonteHospital {
 		guia.valorTotal.valorProcedimentos = new BigDecimal(conteudoGuia.find(VALOR_PROCEDIMENTOS))
 		guia.valorTotal.valorDiarias = new BigDecimal(conteudoGuia.find(VALOR_DIARIAS))
 		guia.valorTotal.valorTaxasAlugueis = new BigDecimal(conteudoGuia.find(VALOR_TAXAS_ALUGUEIS))
-		guia.valorTotal.valorMedicamentos= new BigDecimal(conteudoGuia.find(VALOR_MEDICAMENTOS))
+		guia.valorTotal.valorMedicamentos = new BigDecimal(conteudoGuia.find(VALOR_MEDICAMENTOS))
 		guia.valorTotal.valorOPME = new BigDecimal(conteudoGuia.find(VALOR_OPME))
 		guia.valorTotal.valorGasesMedicinais = new BigDecimal(conteudoGuia.find(VALOR_GASES_MEDICINAIS))
-		guia.valorTotal.valorMateriais  = new BigDecimal(conteudoGuia.find(VALOR_MATERIAIS))
+		guia.valorTotal.valorMateriais = new BigDecimal(conteudoGuia.find(VALOR_MATERIAIS))
 
 		return guia
 	}

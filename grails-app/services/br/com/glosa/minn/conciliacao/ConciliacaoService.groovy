@@ -1,5 +1,6 @@
 package conciliacao
 
+import br.com.zgsolucoes.glosaminn.domain.fonte.FonteConvenioGlosaMaxx
 import br.com.zgsolucoes.glosaminn.domain.fonte.FonteHospitalSantaHelena
 import br.com.zgsolucoes.glosaminn.robot.ExecutorRobot
 import guia.GuiaConvenio
@@ -13,23 +14,25 @@ class ConciliacaoService {
 	void realizaImportacaoEConciliacao() {
 		File pastaPrestador = new File("resources/Arquivos Prestador")
 		File[] arquivosPrestador = pastaPrestador.listFiles()
-		FonteHospitalSantaHelena fonte = new FonteHospitalSantaHelena()
+		FonteHospitalSantaHelena fontePrestador = new FonteHospitalSantaHelena()
 		List<GuiaHospital> guiasHospital = []
 		for (File arquivo : arquivosPrestador) {
 			String conteudoXml = arquivo.text
-			guiasHospital.addAll(fonte.processeConteudoArquivo(conteudoXml))
+			guiasHospital.addAll(fontePrestador.processeConteudoArquivo(conteudoXml))
 		}
 
-		File pastaConvenio = new File("resources/Arquivos Prestador")
-		File[] arquivosConvenio = pastaPrestador.listFiles()
-//		FonteHospitalSantaHelena fonte = new FonteHospitalSantaHelena()
-		List<GuiaHospital> guiasConvenio = []
-//		for(File arquivo : arquivosPrestador) {
-//			String conteudoXml = arquivo.text
-//			guiasConvenio.addAll(fonte.processeConteudoArquivo(conteudoXml))
-//		}
+		ExecutorRobot.executar()
+		
+		File pastaConvenio = new File("src/main/resources/robot/glosaMaxx/12-2019/")
+		File[] arquivosConvenio = pastaConvenio.listFiles()
+		FonteConvenioGlosaMaxx fonteConvenio
+		List<GuiaConvenio> guiasConvenio = []
+		for(File arquivo : arquivosConvenio) {
+			fonteConvenio = new FonteConvenioGlosaMaxx(arquivo.toString())
+			guiasConvenio.addAll(fonteConvenio.processeConteudoArquivo())
+		}
 
-		realizaConciliacao(guiasHospital as List<GuiaHospital>, guiasConvenio as List<GuiaConvenio>)
+		realizaConciliacao(guiasHospital, guiasConvenio)
 
 	}
 
