@@ -1,4 +1,4 @@
-package conciliacao
+package br.com.glosa.minn.conciliacao
 
 import br.com.zgsolucoes.glosaminn.domain.fonte.FonteConvenioGlosaMaxx
 import br.com.zgsolucoes.glosaminn.domain.fonte.FonteHospitalSantaHelena
@@ -22,12 +22,12 @@ class ConciliacaoService {
 		}
 
 		ExecutorRobot.executar()
-		
+
 		File pastaConvenio = new File("src/main/resources/robot/glosaMaxx/12-2019/")
 		File[] arquivosConvenio = pastaConvenio.listFiles()
 		FonteConvenioGlosaMaxx fonteConvenio
 		List<GuiaConvenio> guiasConvenio = []
-		for(File arquivo : arquivosConvenio) {
+		for (File arquivo : arquivosConvenio) {
 			fonteConvenio = new FonteConvenioGlosaMaxx(arquivo.toString())
 			guiasConvenio.addAll(fonteConvenio.processeConteudoArquivo())
 		}

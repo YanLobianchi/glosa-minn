@@ -3,7 +3,7 @@
 	<ul>
 		<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
 			<li class="controller">
-				<g:link controller="${c.logicalPropertyName}" action="realizarConciliacao">Realizar Conciliação</g:link>
+				<h3>SUCESSO!!!</h3>
 			</li>
 		</g:each>
 	</ul>

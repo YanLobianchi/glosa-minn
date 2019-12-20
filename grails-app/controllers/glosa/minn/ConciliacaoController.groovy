@@ -1,6 +1,6 @@
 package glosa.minn
 
-import conciliacao.ConciliacaoService
+import br.com.glosa.minn.conciliacao.ConciliacaoService
 import org.springframework.stereotype.Component
 
 @Component
