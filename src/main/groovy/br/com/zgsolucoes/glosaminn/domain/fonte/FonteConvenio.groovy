@@ -1,4 +1,6 @@
-package br.com.zgsolucoes.glosaminn.domain.fonte;
+package br.com.zgsolucoes.glosaminn.domain.fonte
+
+import br.com.zgsolucoes.glosaminn.domain.dto.DtoGuiaGenerica;
 
 abstract class FonteConvenio {
 
@@ -6,6 +8,6 @@ abstract class FonteConvenio {
 
 	void processeConteudoArquivo() {}
 
-	static List<Object> retorneGuiasDoArquivo() { return []}
+	static List<DtoGuiaGenerica> retorneGuiasDoArquivo() { return []}
 
 }
