@@ -1,5 +1,6 @@
 package br.com.zgsolucoes.glosaminn.domain.fonte
 
+import glosa.minn.ValorTotal
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
 import guia.DadosBeneficiario
@@ -20,7 +21,15 @@ class FonteHospitalSantaHelena extends FonteHospital {
 	private static final CODIGO_PROCEDIMENTO = '(?s)(?<=<codigoProcedimento>).*?(?=</codigoProcedimento>)'
 	private static final QUANTIDADE_EXECUTADA = '(?s)(?<=<quantidadeExecutada>).*?(?=</quantidadeExecutada>)'
 	private static final VALOR_UNITARIO = '(?s)(?<=<valorUnitario>).*?(?=</valorUnitario>)'
-	private static final VALOR_TOTAL = '(?s)(?<=<valorTotal>).*?(?=</valorTotal>)'
+	private static final VALOR_TOTAL_ITEM = '(?s)(?<=<valorTotal>).*?(?=</valorTotal>)'
+	private static final VALOR_TOTAL_GUIA = '(?s)(?<=<valorTotalGeral>).*?(?=</valorTotalGeral>)'
+	private static final VALOR_PROCEDIMENTOS = '(?s)(?<=<valorProcedimentos>).*?(?=</valorProcedimentos>)'
+	private static final VALOR_DIARIAS = '(?s)(?<=<valorDiarias>).*?(?=</valorDiarias>)'
+	private static final VALOR_TAXAS_ALUGUEIS = '(?s)(?<=<valorTaxasAlugueis>).*?(?=</valorTaxasAlugueis>)'
+	private static final VALOR_MATERIAIS = '(?s)(?<=<valorMateriais>).*?(?=</valorMateriais>)'
+	private static final VALOR_MEDICAMENTOS = '(?s)(?<=<valorMedicamentos>).*?(?=</valorMedicamentos>)'
+	private static final VALOR_OPME = '(?s)(?<=<valorOPME>).*?(?=</valorOPME>)'
+	private static final VALOR_GASES_MEDICINAIS = '(?s)(?<=<valorGasesMedicinais>).*?(?=</valorGasesMedicinais>)'
 	private static final DESCRICAO_PROCEDIMENTO = '(?s)(?<=<descricaoProcedimento>).*?(?=</descricaoProcedimento>)'
 
 	private static final NUMERO_GUIA_PRESTADOR = '(?s)(?<=<numeroGuiaPrestador>).*?(?=</numeroGuiaPrestador>)'
@@ -67,7 +76,7 @@ class FonteHospitalSantaHelena extends FonteHospital {
 		for (String item in itens) {
 			ItemHospital itemHospital = new ItemHospital()
 
-			String strValorPago = item.find(VALOR_TOTAL)
+			String strValorPago = item.find(VALOR_TOTAL_ITEM)
 			String strValorUnitario = item.find(VALOR_UNITARIO)
 
 			itemHospital.quantidade = item.find(QUANTIDADE_EXECUTADA).toInteger()
@@ -93,12 +102,26 @@ class FonteHospitalSantaHelena extends FonteHospital {
 		guia.dadosBeneficiario = dadosBeneficiario
 
 		guia.dadosBeneficiario.nomeBeneficiario = conteudoGuia.find(NOME_BENEFICIARIO)
-		guia.numeroGuiaPrestador = conteudoGuia.find(NUMERO_GUIA_PRESTADOR)
-		guia.numeroGuiaOperadora = conteudoGuia.find(NUMERO_GUIA_OPERADORA)
-		guia.dadosBeneficiario.matricula = conteudoGuia.find(NUMERO_CARTEIRA)
-		guia.senha = conteudoGuia.find(SENHA)
 		guia.dadosBeneficiario.atendimentoRn = conteudoGuia.find(ATENDIMENTO_RN)
 		guia.dadosBeneficiario.numero_guia_internacao = conteudoGuia.find(NUMERO_GUIA_INTERNACAO)
+		guia.dadosBeneficiario.matricula = conteudoGuia.find(NUMERO_CARTEIRA)
+
+
+		guia.numeroGuiaPrestador = conteudoGuia.find(NUMERO_GUIA_PRESTADOR)
+		guia.numeroGuiaOperadora = conteudoGuia.find(NUMERO_GUIA_OPERADORA)
+		guia.senha = conteudoGuia.find(SENHA)
+
+		ValorTotal valor = new ValorTotal()
+		guia.valorTotal = valor
+
+		guia.valorTotal.valorTotalGeral = new BigDecimal(conteudoGuia.find(VALOR_TOTAL_GUIA))
+		guia.valorTotal.valorProcedimentos = new BigDecimal(conteudoGuia.find(VALOR_PROCEDIMENTOS))
+		guia.valorTotal.valorDiarias = new BigDecimal(conteudoGuia.find(VALOR_DIARIAS))
+		guia.valorTotal.valorTaxasAlugueis = new BigDecimal(conteudoGuia.find(VALOR_TAXAS_ALUGUEIS))
+		guia.valorTotal.valorMedicamentos= new BigDecimal(conteudoGuia.find(VALOR_MEDICAMENTOS))
+		guia.valorTotal.valorOPME = new BigDecimal(conteudoGuia.find(VALOR_OPME))
+		guia.valorTotal.valorGasesMedicinais = new BigDecimal(conteudoGuia.find(VALOR_GASES_MEDICINAIS))
+		guia.valorTotal.valorMateriais  = new BigDecimal(conteudoGuia.find(VALOR_MATERIAIS))
 
 		return guia
 	}
