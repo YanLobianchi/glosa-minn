@@ -12,6 +12,6 @@ class ConciliacaoController {
     }
 
     def realizarConciliacao() {
-        conciliacaoService.realizaConciliacao([], [])
+        conciliacaoService.realizaImportacaoEConciliacao()
     }
 }
