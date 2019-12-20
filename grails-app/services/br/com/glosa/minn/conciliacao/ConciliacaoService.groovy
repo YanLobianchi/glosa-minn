@@ -23,7 +23,7 @@ class ConciliacaoService {
 
 		ExecutorRobot.executar()
 
-		File pastaConvenio = new File("src/main/resources/robot/glosaMaxx/12-2019/")
+		File pastaConvenio = new File("src/main/resources/robot/glosaMaxx/1-2019/")
 		File[] arquivosConvenio = pastaConvenio.listFiles()
 		FonteConvenioGlosaMaxx fonteConvenio
 		List<GuiaConvenio> guiasConvenio = []
