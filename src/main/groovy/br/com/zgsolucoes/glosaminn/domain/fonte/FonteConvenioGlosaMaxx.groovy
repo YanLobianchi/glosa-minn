@@ -14,15 +14,18 @@ class FonteConvenioGlosaMaxx extends FonteConvenio{
     List<GuiaConvenio> guiasArquivo
     List<Map<String,String>> arquivoPreProcessado
 
-    FonteConvenioGlosaMaxx(){
-        guiasArquivo = new ArrayList<GuiaConvenio>()
+    FonteConvenioGlosaMaxx(String caminhoArquivo){
+        super(caminhoArquivo)
+        this.guiasArquivo = new ArrayList<GuiaConvenio>()
     }
-    void preProcesseConteudoArquivo(String caminhoArquivo) {
-        File arquivoConvenio = new File(caminhoArquivo)
+
+    void preProcesseConteudoArquivo() {
+        File arquivoConvenio = new File(this.caminhoArquivo)
         arquivoPreProcessado  = CSVReader.read(arquivoConvenio)
     }
 
-    void processeConteudoArquivo() {
+    List<GuiaConvenio> processeConteudoArquivo() {
+        preProcesseConteudoArquivo()
         List<ItemConvenio> listaItens = new ArrayList<ItemConvenio>()
         for(Map<String,String> tupla: arquivoPreProcessado){
             ItemConvenio dtoItemGlosaMaxx = new ItemConvenio()
