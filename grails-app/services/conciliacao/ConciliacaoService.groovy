@@ -17,7 +17,9 @@ class ConciliacaoService {
 			GuiaConvenio guiaConvenioEquivalente = guiasConvenio.find { GuiaConvenio guiaConvenio ->
 				guiaConvenio.numeroGuiaOperadora == guiaHospital.numeroGuiaOperadora &&
 						guiaConvenio.numeroGuiaPrestador == guiaHospital.numeroGuiaPrestador &&
-						guiaConvenio.valorApresentado == guiaHospital.valorTotal.valorTotalGeral
+						guiaConvenio.valorApresentado == guiaHospital.valorTotal.valorTotalGeral &&
+						guiaConvenio.senha == guiaHospital.senha &&
+						guiaConvenio.nomeConvenio == guiaHospital.nomeConvenio
 			}
 			if (guiaConvenioEquivalente) {
 				guiaConvenioEquivalente.guiaConciliada = guiaHospital
