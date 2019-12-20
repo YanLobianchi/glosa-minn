@@ -6,4 +6,13 @@ class ItemConvenio extends Item {
 	BigDecimal valorGlosa
 	String motivoGlosa
 	String codigoGlosa
+	String lote
+
+	String numeroGuiaPrestador
+	String numeroSolicitanteInternacao
+	String numeroGuiaOperadora
+	String senha
+	String matricula
+	String rn
+	String nomeGuiaPrestador
 }

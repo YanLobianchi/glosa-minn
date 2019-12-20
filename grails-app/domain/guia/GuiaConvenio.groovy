@@ -9,6 +9,7 @@ class GuiaConvenio extends Guia<ItemConvenio> {
 	BigDecimal valorGlosa
 	BigDecimal valorApresentado
 
+
 	void addItem(ItemConvenio item) {
 		valorPago = valorPago ? valorPago + item.valorPago : item.valorPago
 		valorGlosa = valorGlosa ? valorGlosa + item.valorGlosa : item.valorGlosa
