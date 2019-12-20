@@ -4,7 +4,11 @@ package conciliacao
 import br.com.zgsolucoes.glosaminn.domain.guia.GuiaConvenio
 import br.com.zgsolucoes.glosaminn.domain.guia.GuiaHospital
 import br.com.zgsolucoes.glosaminn.domain.item.Item
+import br.com.zgsolucoes.glosaminn.domain.item.ItemConvenio
+import br.com.zgsolucoes.glosaminn.domain.item.ItemHospital
+import groovy.transform.CompileStatic
 
+@CompileStatic
 class ConciliacaoService {
 
 
@@ -23,7 +27,7 @@ class ConciliacaoService {
 		}
 	}
 
-	private static void realizaEquivalenciaItens(List<Item> itensHospital, List<Item> itensConvenio) {
+	private static void realizaEquivalenciaItens(List<ItemHospital> itensHospital, List<ItemConvenio> itensConvenio) {
 		for (Item itemHospital : itensHospital) {
 			Item itemConvenioEquivalente = itensConvenio.find { Item itemConvenio ->
 				itemConvenio.quantidade == itemHospital.quantidade &&
@@ -31,8 +35,8 @@ class ConciliacaoService {
 						itemConvenio.valorTotal == itemHospital.valorTotal
 			}
 			if (itemConvenioEquivalente) {
-				itemConvenioEquivalente.itemConciliado = itemHospital.itemConciliado
-				itemHospital.itemConciliado = itemConvenioEquivalente.itemConciliado
+				itemConvenioEquivalente.itemConciliado = itemHospital
+				itemHospital.itemConciliado = itemConvenioEquivalente
 			}
 		}
 	}
