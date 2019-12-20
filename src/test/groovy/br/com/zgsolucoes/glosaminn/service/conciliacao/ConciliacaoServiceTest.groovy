@@ -1,22 +1,23 @@
 package br.com.zgsolucoes.glosaminn.service.conciliacao
 
-import br.com.zgsolucoes.glosaminn.domain.conciliacao.Conciliacao
 import br.com.zgsolucoes.glosaminn.domain.guia.GuiaConvenio
 import br.com.zgsolucoes.glosaminn.domain.guia.GuiaHospital
+import br.com.zgsolucoes.glosaminn.domain.valortotal.ValorTotal
 import spock.lang.Specification
 
 class ConciliacaoServiceTest extends Specification {
 
 	GuiaConvenio guiaConvenio1
-	GuiaHospital guiaHospital1
 	GuiaConvenio guiaConvenio2
+	GuiaHospital guiaHospital1
 	GuiaHospital guiaHospital2
+	GuiaHospital guiaHospital3
 	ConciliacaoService conciliacaoService
 	List<GuiaHospital> guiasHospital
 	List<GuiaConvenio> guiasConvenio
-	List<Conciliacao> conciliados
 
 	void setup() {
+		conciliacaoService = new ConciliacaoService()
 
 	}
 
@@ -24,16 +25,23 @@ class ConciliacaoServiceTest extends Specification {
 	}
 
 	def "RealizaConciliacao"() {
-		Setup:
-		guiaConvenio1 = new GuiaConvenio()
-		guiaConvenio2 = new GuiaConvenio()
+		given:
+		guiaConvenio1 = new GuiaConvenio(valorApresentado: 500)
+		guiaConvenio2 = new GuiaConvenio(valorApresentado: 1500)
 		guiaHospital1 = new GuiaHospital()
+		guiaHospital1.valorTotal = new ValorTotal(valorTotalGeral: 1500)
 		guiaHospital2 = new GuiaHospital()
-		guiasHospital = [guiaHospital1, guiaHospital2]
+		guiaHospital2.valorTotal = new ValorTotal(valorTotalGeral: 200)
+		guiaHospital3 = new GuiaHospital()
+		guiaHospital3.valorTotal = new ValorTotal(valorTotalGeral: 500)
+		guiasHospital = [guiaHospital1, guiaHospital2, guiaHospital3]
 		guiasConvenio = [guiaConvenio1, guiaConvenio2]
-		
-		
+
+
 		when:
-		conciliacaoService.realizaConciliacao(guiasHospital, guiasConvenio) == conciliados
+		conciliacaoService.realizaConciliacao(guiasHospital, guiasConvenio)
+		then:
+		guiaHospital1.guiaConciliada == guiaConvenio2
+		guiaHospital2.guiaConciliada == null
 	}
 }
