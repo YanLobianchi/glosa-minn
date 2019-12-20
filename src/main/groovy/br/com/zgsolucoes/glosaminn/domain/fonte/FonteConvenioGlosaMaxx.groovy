@@ -69,7 +69,12 @@ class FonteConvenioGlosaMaxx extends FonteConvenio{
             dtoGuiaGlosaMaxx.itens = guia.value
             dtoGuiaGlosaMaxx.numeroGuiaOperadora = guia.value[0].numeroGuiaOperadora
             dtoGuiaGlosaMaxx.senha = guia.value[0].senha
+            dtoGuiaGlosaMaxx.nomeConvenio = 'GlosaMaxx'
             dtoGuiaGlosaMaxx.dadosBeneficiario = dadosBeneficiario
+
+            dtoGuiaGlosaMaxx.valorApresentado = (BigDecimal)guia.value.sum {it.valorTotal}
+            dtoGuiaGlosaMaxx.valorPago = (BigDecimal)guia.value.sum {it.valorPago}
+            dtoGuiaGlosaMaxx.valorGlosa = (BigDecimal)guia.value.sum {it.valorGlosa}
 
             guiasArquivo.add(dtoGuiaGlosaMaxx)
         }
