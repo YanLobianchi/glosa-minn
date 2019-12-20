@@ -1,8 +1,10 @@
 package br.com.zgsolucoes.glosaminn.domain.guia
 
-class GuiaConvenio extends Guia {
+import br.com.zgsolucoes.glosaminn.domain.item.ItemConvenio
 
-	String matricula
-	String rn
+class GuiaConvenio extends Guia<ItemConvenio> {
+	BigDecimal valorPago
+	BigDecimal valorGlosa
+	BigDecimal valorApresentado
 
 }
