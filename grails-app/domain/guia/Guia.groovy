@@ -6,7 +6,6 @@ import groovy.transform.TypeCheckingMode
 import item.Item
 
 @CompileStatic(TypeCheckingMode.SKIP)
-@GrailsCompileStatic
 abstract class Guia<I extends Item> {
 	Guia guiaConciliada
 	String nomeConvenio
@@ -21,7 +20,6 @@ abstract class Guia<I extends Item> {
 	static hasMany = [itens: Item]
 
 	static constraints = {
-		guiaConciliada nullable: true
 	}
 
 	static embedded = ['dadosBeneficiario']

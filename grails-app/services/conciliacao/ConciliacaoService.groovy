@@ -21,6 +21,8 @@ class ConciliacaoService {
 				GuiaConvenio guiaConvenioEquivalente = guiasConvenioEquivalente.first()
 				guiaConvenioEquivalente.guiaConciliada = guiaHospital
 				guiaHospital.guiaConciliada = guiaConvenioEquivalente
+//				guiaConvenioEquivalente.save()
+//				guiaHospital.save()
 				realizaEquivalenciaItens(guiaHospital.itens as List<ItemHospital>, guiaConvenioEquivalente.itens as List<ItemConvenio>)
 			}
 		}
@@ -31,12 +33,14 @@ class ConciliacaoService {
 			Item itemConvenioEquivalente = itensConvenio.find { Item itemConvenio ->
 				itemConvenio.quantidade == itemHospital.quantidade &&
 						itemConvenio.codigoItem == itemHospital.codigoItem &&
-						itemConvenio.valorTotal == itemHospital.valorTotal && 
+						itemConvenio.valorTotal == itemHospital.valorTotal &&
 						itemConvenio.dataExecucao == itemHospital.dataExecucao
 			}
 			if (itemConvenioEquivalente) {
 				itemConvenioEquivalente.itemConciliado = itemHospital
 				itemHospital.itemConciliado = itemConvenioEquivalente
+//				itemHospital.save()
+//				itemConvenioEquivalente.save(flush: true)
 			}
 		}
 	}
