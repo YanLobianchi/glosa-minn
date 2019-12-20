@@ -4,9 +4,12 @@ import br.com.zgsolucoes.glosaminn.dto.DtoGuiaGenerica
 import br.com.zgsolucoes.glosaminn.dto.DtoGuiaGlosaMaxx
 import br.com.zgsolucoes.glosaminn.dto.DtoItemGlosaMaxx
 import br.com.zgsolucoes.glosaminn.utils.CSVReader
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
 
 import java.text.SimpleDateFormat
 
+@CompileStatic(TypeCheckingMode.SKIP)
 class FonteConvenioGlosaMaxx extends FonteConvenio{
     List<DtoGuiaGenerica> guiasArquivo
     List<Map<String,String>> arquivoPreProcessado

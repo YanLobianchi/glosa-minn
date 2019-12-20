@@ -1,9 +1,14 @@
 package br.com.zgsolucoes.glosaminn.domain.fonte
 
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
 import guia.DadosBeneficiario
 import guia.GuiaHospital
 import item.ItemHospital
 
+import java.text.SimpleDateFormat
+
+@CompileStatic(TypeCheckingMode.SKIP)
 class FonteHospitalSantaHelena extends FonteHospital {
 
 	private static final GUIAS = '(?s)<guiaResumoInternacao>.*?</guiaResumoInternacao>'
@@ -14,7 +19,6 @@ class FonteHospitalSantaHelena extends FonteHospital {
 	private static final CODIGO_TABELA = '(?s)(?<=<codigoTabela>).*?(?=</codigoTabela>)'
 	private static final CODIGO_PROCEDIMENTO = '(?s)(?<=<codigoProcedimento>).*?(?=</codigoProcedimento>)'
 	private static final QUANTIDADE_EXECUTADA = '(?s)(?<=<quantidadeExecutada>).*?(?=</quantidadeExecutada>)'
-	private static final REDUCAO_ACRESCIMO = '(?s)(?<=<reducaoAcrescimo>).*?(?=</reducaoAcrescimo>)'
 	private static final VALOR_UNITARIO = '(?s)(?<=<valorUnitario>).*?(?=</valorUnitario>)'
 	private static final VALOR_TOTAL = '(?s)(?<=<valorTotal>).*?(?=</valorTotal>)'
 	private static final DESCRICAO_PROCEDIMENTO = '(?s)(?<=<descricaoProcedimento>).*?(?=</descricaoProcedimento>)'
@@ -63,9 +67,20 @@ class FonteHospitalSantaHelena extends FonteHospital {
 		for (String item in itens) {
 			ItemHospital itemHospital = new ItemHospital()
 
+			String strValorPago = item.find(VALOR_TOTAL)
+			String strValorUnitario = item.find(VALOR_UNITARIO)
+
+			itemHospital.quantidade = item.find(QUANTIDADE_EXECUTADA).toInteger()
+			itemHospital.dataExecucao = obtenhaData(item)
 			itemHospital.codigoTabela = item.find(CODIGO_TABELA)
 			itemHospital.codigoItem = item.find(CODIGO_PROCEDIMENTO)
 			itemHospital.descricaoItem = item.find(DESCRICAO_PROCEDIMENTO)
+
+			BigDecimal valorPago = new BigDecimal(strValorPago)
+			BigDecimal valorUnitario = new BigDecimal(strValorUnitario)
+
+			itemHospital.valorTotal = valorPago
+			itemHospital.valorUnitario = valorUnitario
 
 			itensList.add(itemHospital)
 		}
@@ -88,4 +103,11 @@ class FonteHospitalSantaHelena extends FonteHospital {
 		return guia
 	}
 
+	private static Date obtenhaData(String item) {
+		String padrao = "yyyy-MM-dd"
+		String dataExtraida = item.find(DATA_EXECUCAO)
+		Date data = new SimpleDateFormat(padrao).parse(dataExtraida)
+
+		return data
+	}
 }
